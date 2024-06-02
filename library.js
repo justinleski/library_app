@@ -1,32 +1,52 @@
 const myLibrary = []; // array where books are stored
 
-// Bind the action in JS - bad practice to use HTML
-
-document.querySelector("#bookForm").addEventListener("submit", addBook);
-console.log("Hello 2");
-
 function Book(name, author, read) { // constructor
     this.name = name;
     this.author = author;
     this.read = read;
 }
 
-function addBook() {
+function updateGrid(){
 
-    console.log("Hello works");
+    for (var book of myLibrary) {
+        // Create card
+        const bookCard = document.createElement("div");
+        bookCard.className = "bookCard";
 
-    // !!! we need to use constructor to make new book
-    let tempBook = document.getElementById("bookForm");
-    tempBook.addEventListener("submit", function(event){
-        event.preventDefault(); // prevents default browser behaviour like pg refresh
+        // Add title
+        const bookName = document.createElement("h1");
+        bookName.textContent = book.name;
+        bookCard.appendChild(bookName);
+    
+        // Add author
+        const bookAuth = document.createElement("h2");
+        bookAuth.textContent = book.author;
+        bookCard.appendChild(bookAuth);
 
+        // Add card to grid
+        document.getElementById("bookGrid").appendChild(bookCard);
+    }
 
-        //new Book(tempBook); // FormData() is also useful
+    
 
-        // USEFUL: https://www.youtube.com/watch?v=7LGpIQ6ceJs
-    });
-
-    // Add constructor to array
-    //myLibrary.push(tempBook);
 }
 
+function addBook() {
+
+    // Get values from form
+    const name = document.getElementById("book");
+    const author = document.getElementById("author");
+    const read = document.getElementById("readPrev");
+
+    const tempBook = new Book(name, author, read); 
+
+    // Add constructor to array
+    myLibrary.push(tempBook);
+    updateGrid();
+}
+
+// Bind the action in JS - bad practice to use HTML
+document.querySelector("#bookForm").addEventListener("submit", function(event){
+    event.preventDefault();
+    addBook();
+});
