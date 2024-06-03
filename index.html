@@ -9,7 +9,7 @@
 </head>
 <body>
     <h1>Library of Al</h1>
-    <h2>Al is short for Albert</h2>
+    <h3>Al is short for Albert</h3>
 
     <!-- Previously, actions attribut was the .js file, this redirects to the file - invalid-->
     <form id="bookForm">
@@ -17,10 +17,10 @@
             
             <legend>Details</legend>
             <label for="author">Author:</label>
-            <input type="text" id="author" name="author">
+            <input type="text" id="author" name="author" required>
 
             <label for="book">Book:</label>
-            <input type="text" id="book" name="book">
+            <input type="text" id="book" name="book" required>
 
 
             <legend>Info</legend>
@@ -32,8 +32,9 @@
         </fieldset>
     </form>
 
+    <h2>My Books</h2>
     <div id="bookGrid">
-        
+
     </div>
 </body>
 </html>
