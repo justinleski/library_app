@@ -6,6 +6,8 @@ function Book(name, author, read) { // constructor
     this.read = read;
 }
 
+
+
 function updateGrid(){
 
     for (const book of myLibrary) {
@@ -33,8 +35,8 @@ function updateGrid(){
         removeBox.style.justifyContent = "end";
 
         // Put button in box
-        const remBtn = document.createElement("img");
-        remBtn.setAttribute("src", "imgs/close-round-icon.svg");
+        const remBtn = document.createElement("button");
+        remBtn.setAttribute("background-image", "imgs/close-round-icon.svg");
         remBtn.className = "remBtn";
         
 
@@ -45,11 +47,18 @@ function updateGrid(){
         document.getElementById("bookGrid").appendChild(bookCard);
     }
 
-    
+    // !!! Since we use a const tempBook this just changes the var globally and now we have two of the same book
+    //alert(myLibrary[0].name.value +myLibrary[1].name.value);
 
 }
 
+function remBook() {
+    // class of "container" is bookCard
+    // We need to somehow link
+}
+
 function addBook() {
+
 
     // Get values from form
     const name = document.getElementById("book");
@@ -57,9 +66,10 @@ function addBook() {
     const read = document.getElementById("readPrev");
 
     const tempBook = new Book(name, author, read); 
+    //const immutableBook = JSON.parse(JSON.stringify(tempBook)); // Make immutable !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
     // Add constructor to array
-    myLibrary.push(tempBook);
+    myLibrary.push(tempBook); 
     updateGrid();
 }
 
