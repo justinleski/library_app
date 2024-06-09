@@ -17,10 +17,6 @@
 body {
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
-    display: flex;
-    flex-direction: column;
-    padding-left: 300px;
-    padding-right: 300px;
 }
 img, picture, video, canvas, svg {
     display: block;
@@ -30,7 +26,7 @@ input, button, textarea, select {
     font: inherit;
 }
 p, h1, h2, h3, h4, h5, h6 {
-    overflow-wrap: break-word;
+    /*overflow-wrap: break-word;*/
 }
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--main-font);
@@ -46,18 +42,16 @@ p, form, button{
     display: flex;
     flex-direction: column;
     background-color: rgb(238, 234, 234);
-    max-width: 60%;
     padding: 16px;
     font-family: inherit;
+    margin: 16px;
+    border-radius: 0.5rem;
 }
 
-.bookCard:not(:last-child) {
-    margin-bottom: 16px;
-}
 
 #bookGrid {
     display: grid;
-    width: 602px;
+    width: 100%;
     padding: 24px;
 
     grid-template-columns: 1fr 1fr 1fr;
@@ -82,4 +76,11 @@ fieldset {
 
 .remBtn:hover {
     fill: rgb(209, 88, 88);
+}
+
+.libraryWrapper {
+    display: flex;
+    flex-direction: column;
+    padding-left: 300px;
+    padding-right: 300px;
 }

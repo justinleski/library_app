@@ -6,11 +6,32 @@ function Book(name, author, read) { // constructor
     this.read = read;
 }
 
+function addBook() {
 
+    // Get values from form
+    const newName = document.getElementById("book").value; // added '.value' to each query selector. Otherwise it just takes the while HTML tag
+    const newAuthor = document.getElementById("author").value;
+    const newRead = document.getElementById("readPrev").value;
+
+    // Add constructor to array
+    myLibrary.push(new Book(newName, newAuthor, newRead)); // Make copy and push to array
+    document.getElementById("bookForm").reset(); // WEIRD !!! Why does resetting it make it blnk when update after reset
+    
+}
+
+function remBook() {
+    // class of "container" is bookCard
+    // We need to somehow link
+}
 
 function updateGrid(){
 
-    for (const book of myLibrary) {
+    myLibrary.forEach(function (item){
+        console.log(item);
+    });
+
+    let lastBook = myLibrary.at(-1);
+    console.log("Last Book is"+lastBook.name);
 
         // Keep in mind - we need a .value in order to print the value of the object
         // alert(book.author.value);
@@ -21,12 +42,12 @@ function updateGrid(){
 
         // Add title
         const bookName = document.createElement("h1");
-        bookName.textContent = book.name.value;
+        bookName.textContent = lastBook.name;
         bookCard.appendChild(bookName);
     
         // Add author
         const bookAuth = document.createElement("h2");
-        bookAuth.textContent = book.author.value;
+        bookAuth.textContent = lastBook.author;
         bookCard.appendChild(bookAuth);
 
         // Add remove box
@@ -45,36 +66,14 @@ function updateGrid(){
 
         // Add card to grid
         document.getElementById("bookGrid").appendChild(bookCard);
-    }
-
-    // !!! Since we use a const tempBook this just changes the var globally and now we have two of the same book
-    //alert(myLibrary[0].name.value +myLibrary[1].name.value);
+    
 
 }
 
-function remBook() {
-    // class of "container" is bookCard
-    // We need to somehow link
-}
-
-function addBook() {
-
-
-    // Get values from form
-    const name = document.getElementById("book");
-    const author = document.getElementById("author");
-    const read = document.getElementById("readPrev");
-
-    const tempBook = new Book(name, author, read); 
-    //const immutableBook = JSON.parse(JSON.stringify(tempBook)); // Make immutable !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-    // Add constructor to array
-    myLibrary.push(tempBook); 
-    updateGrid();
-}
 
 // Bind the action in JS - bad practice to use HTML
 document.querySelector("#bookForm").addEventListener("submit", function(event){
     event.preventDefault(); // stops page from refreshing automatically
     addBook();
+    updateGrid();
 });
