@@ -15,7 +15,7 @@ function addBook() {
 
     // Add constructor to array
     myLibrary.push(new Book(newName, newAuthor, newRead)); // Make copy and push to array
-    document.getElementById("bookForm").reset(); // WEIRD !!! Why does resetting it make it blnk when update after reset
+    document.getElementById("bookForm").reset(); 
     
 }
 
@@ -26,48 +26,44 @@ function remBook() {
 
 function updateGrid(){
 
-    myLibrary.forEach(function (item){
-        console.log(item);
-    });
+    // myLibrary.forEach(function (item){
+    //     console.log(item);
+    // });
 
     let lastBook = myLibrary.at(-1);
     console.log("Last Book is"+lastBook.name);
 
-        // Keep in mind - we need a .value in order to print the value of the object
-        // alert(book.author.value);
+    // Create card
+    const bookCard = document.createElement("div");
+    bookCard.className = "bookCard";
 
-        // Create card
-        const bookCard = document.createElement("div");
-        bookCard.className = "bookCard";
+    // Add title
+    const bookName = document.createElement("h1");
+    bookName.textContent = lastBook.name;
+    bookCard.appendChild(bookName);
 
-        // Add title
-        const bookName = document.createElement("h1");
-        bookName.textContent = lastBook.name;
-        bookCard.appendChild(bookName);
-    
-        // Add author
-        const bookAuth = document.createElement("h2");
-        bookAuth.textContent = lastBook.author;
-        bookCard.appendChild(bookAuth);
+    // Add author
+    const bookAuth = document.createElement("h2");
+    bookAuth.textContent = lastBook.author;
+    bookCard.appendChild(bookAuth);
 
-        // Add remove box
-        const removeBox = document.createElement("div");
-        removeBox.style.display = "flex";
-        removeBox.style.justifyContent = "end";
+    // Add remove box
+    const removeBox = document.createElement("div");
+    removeBox.style.display = "flex";
+    removeBox.style.justifyContent = "end";
 
-        // Put button in box
-        const remBtn = document.createElement("button");
-        remBtn.setAttribute("background-image", "imgs/close-round-icon.svg");
-        remBtn.className = "remBtn";
-        
-
-        removeBox.appendChild(remBtn);
-        bookCard.appendChild(removeBox);
-
-        // Add card to grid
-        document.getElementById("bookGrid").appendChild(bookCard);
+    // Put button in box
+    const remBtn = document.createElement("button");
+    remBtn.innerHTML = "&times;";
+    remBtn.className = "remBtn";
     
 
+    removeBox.appendChild(remBtn);
+    bookCard.appendChild(removeBox);
+
+    // Add card to grid
+    document.getElementById("bookGrid").appendChild(bookCard);
+    
 }
 
 
@@ -76,4 +72,9 @@ document.querySelector("#bookForm").addEventListener("submit", function(event){
     event.preventDefault(); // stops page from refreshing automatically
     addBook();
     updateGrid();
+});
+
+document.querySelector(".openModalBtn").addEventListener("click", () => {
+    const modal = document.querySelector(button.openModalBtn);
+    openModal(modal);
 });

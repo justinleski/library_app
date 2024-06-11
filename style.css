@@ -34,6 +34,27 @@ h1, h2, h3, h4, h5, h6 {
 p, form, button{
     font-family: var(--sec-font);
 }
+
+h1 {
+    font-size: 4rem;
+}
+
+h2 {
+    font-size: 2.5rem;
+}
+
+h3 {
+    font-style: italic;
+}
+
+.bookCard h1 {
+    font-size: 2.75rem;
+}
+
+.bookCard h2 {
+    font-size: 1.45rem;
+}
+
 #root, #__next {
     isolation: isolate;
 }
@@ -61,6 +82,16 @@ p, form, button{
 #bookForm {
     margin-top: 32px;
     margin-bottom: 32px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    z-index: 10;
+    transition: 100ms ease-in-out;
+}
+
+#bookForm.active {
+    transform: translate(-50%, -50%) scale(1);
 }
 
 fieldset {
@@ -68,19 +99,82 @@ fieldset {
     padding: 0;
 }
 
-.remBtn {
-    width: 20px;
-    height: 20px;
-    fill: orchid;
-}
-
-.remBtn:hover {
-    fill: rgb(209, 88, 88);
-}
-
 .libraryWrapper {
     display: flex;
     flex-direction: column;
-    padding-left: 300px;
-    padding-right: 300px;
+    padding-left: clamp(50px, 300px, 700px);
+    padding-right: clamp(50px, 300px, 700px);
+    padding-top: clamp(32px, 48px, 96px);
+    padding-bottom: clamp(32px, 48px, 96px);
+}
+
+.openModalBtn {
+    position: fixed;
+    width: 100px;
+    height: 100px;
+    left: 90%;
+    top: 87.5%;
+
+    font-size: 5rem;
+    background-color: bisque;
+    border-radius: 100%;
+    color: rgb(27, 171, 249);
+    line-height: 0;
+}
+
+.openModalBtn:hover {
+    /*transform: scale(1.2);*/
+}
+
+.remBtn, .openModalBtn {
+    cursor: pointer;
+    border: none;
+    outline: none;
+    font-weight: bolder;
+}
+
+.remBtn {
+    width: 20px;
+    height: 20px;
+    font-size: 1.5rem;
+    background: none;
+}
+
+.remBtn:hover {
+    color: rgb(209, 88, 88);
+}
+
+
+
+#overlay {
+    position: fixed;
+    opacity: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgb(0, 0, 0, 0.5);
+    pointer-events: none;
+    transition: 100ms ease-in-out;
+}
+
+#overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+@media screen and (max-width: 1280px){
+    #bookGrid {grid-template-columns: 1fr 1fr;}
+    .libraryWrapper{
+        padding-left: clamp(70px, 100px, 180px);
+        padding-right: clamp(70px, 100px, 180px);
+    }
+}
+
+@media screen and (max-width: 600px){
+    #bookGrid {grid-template-columns: 1fr;}
+    .libraryWrapper{
+        padding-left: clamp(20px, 40px, 70px);
+        padding-right: clamp(20px, 40px, 70px);
+    }
 }
