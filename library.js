@@ -78,3 +78,6 @@ document.querySelector(".openModalBtn").addEventListener("click", () => {
     const modal = document.querySelector(button.openModalBtn);
     openModal(modal);
 });
+
+/// LEFT OFF 14:24
+// https://www.youtube.com/watch?v=MBaw_6cPmAw

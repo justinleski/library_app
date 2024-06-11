@@ -12,21 +12,23 @@
     <h1>Library of Al</h1>
     <h3>Al is short for Albert</h3>
 
-    <div id="overlay"></div>
+    <div id="overlay" class="active"></div>
 
     <!-- Previously, actions attribut was the .js file, this redirects to the file - invalid-->
-    <form id="bookForm">
+    <form id="bookForm" class="active">
+        <div class="formHeader">
+            <h2>New Book</h2>
+            <button class="remBtn">&times;</button>
+        </div>
+        
         <fieldset>
             
-            <legend>Details</legend>
             <label for="author">Author:</label>
             <input type="text" id="author" name="author" required>
 
             <label for="book">Book:</label>
             <input type="text" id="book" name="book" required>
 
-
-            <legend>Info</legend>
             <label for="readPrev">Read before:</label>
             <input type="radio" id="readPrev">
 

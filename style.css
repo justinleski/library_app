@@ -67,6 +67,7 @@ h3 {
     font-family: inherit;
     margin: 16px;
     border-radius: 0.5rem;
+    overflow-wrap: break-word;
 }
 
 
@@ -88,15 +89,41 @@ h3 {
     transform: translate(-50%, -50%) scale(0);
     z-index: 10;
     transition: 100ms ease-in-out;
+    background-color: white;
+    padding: 32px;
+    border-radius: 1.5rem;
+    min-width: min(50%, 600px);
+}
+
+#bookForm h2{
+    padding-bottom: 32px;
+    line-height: 1;
 }
 
 #bookForm.active {
     transform: translate(-50%, -50%) scale(1);
 }
 
+input {
+    border: none;
+    border-bottom: 1px solid black;
+    margin-bottom: 16px;
+}
+
+input:focus {
+    outline: none;
+}
+
+.formHeader {
+    display: flex;
+    justify-content: space-between;
+}
+
 fieldset {
     border: 0;
     padding: 0;
+    display: flex;
+    flex-direction: column;
 }
 
 .libraryWrapper {
@@ -176,5 +203,8 @@ fieldset {
     .libraryWrapper{
         padding-left: clamp(20px, 40px, 70px);
         padding-right: clamp(20px, 40px, 70px);
+    }
+    #bookForm {
+        min-width: min(80%, 310px);
     }
 }
