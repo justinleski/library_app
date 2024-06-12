@@ -16,7 +16,8 @@ function addBook() {
     // Add constructor to array
     myLibrary.push(new Book(newName, newAuthor, newRead)); // Make copy and push to array
     document.getElementById("bookForm").reset(); 
-    
+
+
 }
 
 function remBook() {
@@ -63,6 +64,7 @@ function updateGrid(){
 
     // Add card to grid
     document.getElementById("bookGrid").appendChild(bookCard);
+    closeForm();
     
 }
 
@@ -74,10 +76,23 @@ document.querySelector("#bookForm").addEventListener("submit", function(event){
     updateGrid();
 });
 
+/*
+OPEN AND CLOSE MODAL
+*/
 document.querySelector(".openModalBtn").addEventListener("click", () => {
-    const modal = document.querySelector(button.openModalBtn);
-    openModal(modal);
+    newForm();
 });
 
-/// LEFT OFF 14:24
-// https://www.youtube.com/watch?v=MBaw_6cPmAw
+document.querySelector(".closeModalBtn").addEventListener("click", () => {
+    closeForm();
+});
+
+function newForm() {
+    document.querySelector("#overlay").classList.add("active");
+    document.querySelector("#bookForm").classList.add("active");
+}
+
+function closeForm() {
+    document.querySelector("#overlay").classList.remove("active");
+    document.querySelector("#bookForm").classList.remove("active");
+}
