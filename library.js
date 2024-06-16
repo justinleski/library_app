@@ -48,7 +48,7 @@ function remBook(oldCard) {
 
    
 
-function updateGrid(bookIndex){
+function updateGrid(){
     
     let lastBook = myLibrary.at(-1);
 
@@ -102,7 +102,6 @@ function updateGrid(bookIndex){
     // Add card to grid
     document.getElementById("bookGrid").appendChild(bookCard);
     closeForm();
-    
 }
 
 
@@ -110,7 +109,7 @@ function updateGrid(bookIndex){
 document.querySelector("#bookForm").addEventListener("submit", function(event){
     event.preventDefault(); // stops page from refreshing automatically
     addBook();
-    updateGrid(bookIndex);
+    updateGrid();
 });
 
 /*
