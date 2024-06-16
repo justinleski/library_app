@@ -1,4 +1,5 @@
 const myLibrary = []; // array where books are stored
+let bookIndex = -1;
 
 function Book(name, author, read) { // constructor
     this.name = name;
@@ -20,23 +21,42 @@ function addBook() {
 
 }
 
-function remBook() {
-    // class of "container" is bookCard
-    // We need to somehow link
-}
+function remBook(oldCard) {
+    
+    // // Remove array from book
+    // const tempArray = myLibrary.splice( CHANGE!!! );
+    // tempArray.shift(); // remove oldBook
+    // bookIndex -= 1;
 
-function updateGrid(){
+    //  // Shift all indices of tempArray down 1
+    //  tempArray.forEach((element) => element.index - 1);
+    
+    //  // Concat the library back together
+    //  myLibrary = myLibrary.concat(tempArray);
 
-    // myLibrary.forEach(function (item){
-    //     console.log(item);
-    // });
+    // Remove card
 
+
+    // we need to take the data attribute 'index' from the object
+    //oldCard.getAttribute("data-")
+    oldCard.remove();
+    alert("penis");
+
+ }
+
+    
+
+   
+
+function updateGrid(bookIndex){
+    
     let lastBook = myLibrary.at(-1);
-    console.log("Last Book is"+lastBook.name);
 
     // Create card
     const bookCard = document.createElement("div");
     bookCard.className = "bookCard";
+    bookIndex += 1;
+    bookCard.dataset.bookPos = bookIndex;
 
     // Add title
     const bookName = document.createElement("h1");
@@ -57,7 +77,24 @@ function updateGrid(){
     const remBtn = document.createElement("button");
     remBtn.innerHTML = "&times;";
     remBtn.className = "remBtn";
-    
+    remBtn.addEventListener("click", () => {
+
+        // Remove indice in array and card
+        const oldBook = bookCard.dataset.bookPos;
+        bookCard.remove();
+
+        // Rem indice
+        const tempArray = myLibrary.splice(oldBook); // splice at data attribute value
+        tempArray.shift(); // remove oldBook
+        bookIndex -= 1;
+
+         // Shift all indices of tempArray down 1
+         tempArray.forEach((element) => element.index - 1);
+        
+         // Concat the library back together
+         myLibrary = myLibrary.concat(tempArray);
+        
+    }); // Hook up function to button
 
     removeBox.appendChild(remBtn);
     bookCard.appendChild(removeBox);
@@ -73,7 +110,7 @@ function updateGrid(){
 document.querySelector("#bookForm").addEventListener("submit", function(event){
     event.preventDefault(); // stops page from refreshing automatically
     addBook();
-    updateGrid();
+    updateGrid(bookIndex);
 });
 
 /*
