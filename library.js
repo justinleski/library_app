@@ -21,33 +21,6 @@ function addBook() {
 
 }
 
-function remBook(oldCard) {
-    
-    // // Remove array from book
-    // const tempArray = myLibrary.splice( CHANGE!!! );
-    // tempArray.shift(); // remove oldBook
-    // bookIndex -= 1;
-
-    //  // Shift all indices of tempArray down 1
-    //  tempArray.forEach((element) => element.index - 1);
-    
-    //  // Concat the library back together
-    //  myLibrary = myLibrary.concat(tempArray);
-
-    // Remove card
-
-
-    // we need to take the data attribute 'index' from the object
-    //oldCard.getAttribute("data-")
-    oldCard.remove();
-    alert("penis");
-
- }
-
-    
-
-   
-
 function updateGrid(){
     
     let lastBook = myLibrary.at(-1);
@@ -57,16 +30,6 @@ function updateGrid(){
     bookCard.className = "bookCard";
     bookIndex += 1;
     bookCard.dataset.bookPos = bookIndex;
-
-    // Add title
-    const bookName = document.createElement("h1");
-    bookName.textContent = lastBook.name;
-    bookCard.appendChild(bookName);
-
-    // Add author
-    const bookAuth = document.createElement("h2");
-    bookAuth.textContent = lastBook.author;
-    bookCard.appendChild(bookAuth);
 
     // Add remove box
     const removeBox = document.createElement("div");
@@ -98,6 +61,16 @@ function updateGrid(){
 
     removeBox.appendChild(remBtn);
     bookCard.appendChild(removeBox);
+
+    // Add title
+    const bookName = document.createElement("h1");
+    bookName.textContent = lastBook.name;
+    bookCard.appendChild(bookName);
+
+    // Add author
+    const bookAuth = document.createElement("h2");
+    bookAuth.textContent = lastBook.author;
+    bookCard.appendChild(bookAuth);
 
     // Add card to grid
     document.getElementById("bookGrid").appendChild(bookCard);
