@@ -157,6 +157,54 @@ fieldset {
     line-height: 0;
 }
 
+input[type="checkbox"].toggle {
+    opacity: 0;
+    position: absolute;
+    cursor: pointer;
+    left: -10000px;
+    top: -10000px;
+}
+
+input[type="checkbox"].toggle + label {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+input[type="checkbox"].toggle + label::before {
+    content: "";
+    width: 4em;
+    height: 2em;
+    background-color: rgb(209, 204, 204);
+    border-radius: 1em;
+    margin-right: 0.5em;
+    transition: 200ms ease-in-out;
+}
+
+input[type="checkbox"].toggle + label::after {
+    content: "";
+    width: 1.8em;
+    height: 1.8em;
+    left: .2em;
+    background-color: rgb(255, 255, 255);
+    border-radius: 1em;
+    position: absolute;
+    transition: 200ms ease-in-out;
+}
+
+input[type="checkbox"].toggle:checked + label::after {
+    transform: translateX(100%);
+    background-color: aqua;
+}
+
+#bookForm fieldset button[type="submit"]{
+    border-radius: 1em;
+    border: 0;
+    margin-top: 16px;
+    padding: 8px;
+    cursor: pointer;
+}
+
 .openModalBtn:hover {
     /*transform: scale(1.2);*/
 }

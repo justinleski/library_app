@@ -9,8 +9,8 @@
 </head>
 <body>
     <div class="libraryWrapper">
-    <h1>Library of Al</h1>
-    <h3>Al is short for Albert</h3>
+    <h1>BookKeeper</h1>
+    <h3>Tracking your books simplified</h3>
 
     <div id="overlay" class=""></div>
 
@@ -24,14 +24,13 @@
         <fieldset>
             
             <label for="author">Author:</label>
-            <input type="text" id="author" name="author" required>
+            <input type="text" id="author" name="author" placeholder="John Doe" required>
 
             <label for="book">Book:</label>
-            <input type="text" id="book" name="book" required>
+            <input type="text" id="book" name="book" placeholder="A Cool Book" required>
 
+            <input type="checkbox" id="readPrev" class="toggle">
             <label for="readPrev">Read before:</label>
-            <input type="radio" id="readPrev">
-
 
             <button type="submit">New Book</button>
         </fieldset>
